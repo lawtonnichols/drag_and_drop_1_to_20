@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://dqrjacccvsu5p"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_k02yu"]
+[ext_resource type="Texture2D" uid="uid://cux0dbbphpfgr" path="res://images/Background/Pink.png" id="1_xgjm8"]
+[ext_resource type="Script" path="res://Background.gd" id="2_upgrf"]
+[ext_resource type="Texture2D" uid="uid://dkyi7xru43c1v" path="res://images/Buttons/Restart.png" id="4_l6b6h"]
+[ext_resource type="Shader" path="res://fireworks.gdshader" id="5_815q4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jqr01"]
+shader = ExtResource("5_815q4")
+shader_parameter/TWOPI = 6.28319
+shader_parameter/NUM_EXPLOSIONS = 8.0
+shader_parameter/NUM_PARTICLES = 70.0
+shader_parameter/animation_time_elapsed = 0.0
+shader_parameter/MOD3 = Vector3(0.1031, 0.11369, 0.13787)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8a41"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_k02yu")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("1_xgjm8")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 800, 600)
+script = ExtResource("2_upgrf")
+
+[node name="Slots" type="GridContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.184
+anchor_top = 0.058
+anchor_right = 0.184
+anchor_bottom = 0.058
+offset_left = -0.200012
+offset_top = 0.199997
+offset_right = 601.8
+offset_bottom = 425.2
+grow_vertical = 2
+theme_override_constants/h_separation = 33
+theme_override_constants/v_separation = 33
+columns = 5
+
+[node name="Cards" type="GridContainer" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -735.0
+offset_top = 170.0
+offset_right = -42.0
+offset_bottom = 271.0
+grow_horizontal = 0
+grow_vertical = 2
+columns = 10
+
+[node name="Fireworks" type="ColorRect" parent="."]
+visible = false
+z_index = 2
+material = SubResource("ShaderMaterial_jqr01")
+custom_minimum_size = Vector2(800, 600)
+offset_right = 800.0
+offset_bottom = 600.0
+
+[node name="Restart" type="Button" parent="."]
+texture_filter = 1
+offset_left = 758.0
+offset_top = 1.0
+offset_right = 800.0
+offset_bottom = 43.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_n8a41")
+icon = ExtResource("4_l6b6h")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="button_down" from="Restart" to="." method="_on_restart_button_down"]
+[connection signal="button_up" from="Restart" to="." method="_on_restart_button_up"]
+[connection signal="mouse_entered" from="Restart" to="." method="_on_restart_mouse_entered"]

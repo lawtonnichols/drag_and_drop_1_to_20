@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dydja2kbwvalm"]
+
+[ext_resource type="StyleBox" uid="uid://c1fuxwjnlljcp" path="res://styles/slot.tres" id="1_6khbs"]
+[ext_resource type="Script" path="res://slot.gd" id="1_ebweu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8nm0k"]
+bg_color = Color(0.364706, 0.223529, 0.388235, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.972549, 1, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+shadow_color = Color(0, 0, 0, 0.886275)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilfx5"]
+bg_color = Color(0.627451, 0.427451, 0.658824, 1)
+border_color = Color(0.537255, 0.054902, 0.611765, 0)
+shadow_color = Color(0, 0, 0, 0.886275)
+
+[node name="Slot" type="Panel"]
+custom_minimum_size = Vector2(72, 72)
+theme_override_styles/panel = ExtResource("1_6khbs")
+script = ExtResource("1_ebweu")
+
+[node name="Highlighted" type="Panel" parent="."]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 72.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8nm0k")
+
+[node name="HoverStyle" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ilfx5")
