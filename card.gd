@@ -21,6 +21,11 @@ func _process(delta):
 	else:
 		correct_slot.get_node("Highlighted").hide()
 	
+	if locked:
+		correct_slot.get_node("Completed").show()
+	else:
+		correct_slot.get_node("Completed").hide()
+	
 func _physics_process(delta):
 	if selected:
 		global_position = lerp(global_position, get_global_mouse_position() - 0.5 * get_size(), 25 * delta)

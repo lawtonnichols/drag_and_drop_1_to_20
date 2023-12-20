@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dydja2kbwvalm"]
+[gd_scene load_steps=6 format=3 uid="uid://dydja2kbwvalm"]
 
 [ext_resource type="StyleBox" uid="uid://c1fuxwjnlljcp" path="res://styles/slot.tres" id="1_6khbs"]
 [ext_resource type="Script" path="res://slot.gd" id="1_ebweu"]
@@ -21,12 +21,18 @@ bg_color = Color(0.627451, 0.427451, 0.658824, 1)
 border_color = Color(0.537255, 0.054902, 0.611765, 0)
 shadow_color = Color(0, 0, 0, 0.886275)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qttco"]
+bg_color = Color(0.305882, 0.184314, 0.32549, 1)
+border_color = Color(0.537255, 0.054902, 0.611765, 0)
+shadow_color = Color(0, 0, 0, 0.886275)
+
 [node name="Slot" type="Panel"]
 custom_minimum_size = Vector2(72, 72)
 theme_override_styles/panel = ExtResource("1_6khbs")
 script = ExtResource("1_ebweu")
 
 [node name="Highlighted" type="Panel" parent="."]
+visible = false
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 0
 offset_right = 72.0
@@ -40,3 +46,11 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ilfx5")
+
+[node name="Completed" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qttco")
