@@ -87,7 +87,7 @@ vec3 explosion(vec2 uv, vec2 p, float seed, float t) {
 
 
 void fragment() {
-    vec2 iResolution = vec2(1024,600);
+    vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE; // vec2(800,600);
 	vec2 uv = FRAGCOORD.xy / iResolution.xy;
                 uv.x -= .5;
     uv.x *= iResolution.x/iResolution.y;
